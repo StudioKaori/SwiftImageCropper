@@ -16,7 +16,7 @@
 import CropViewController
 import UIKit
 
-class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, CropViewControllerDelegate {
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -52,7 +52,23 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
   func showCrop(image: UIImage) {
     // cropper
     let vc = CropViewController(croppingStyle: .default, image: image)
+    
+    // cropper option, the cropper works withiout following
+    // default aspect ration
+    vc.aspectRatioPreset = .presetSquare
+    // You can lock the aspect ratio
+    vc.aspectRatioLockEnabled = true
+    vc.toolbarPosition = .bottom
+    vc.doneButtonTitle = "Continue"
+    vc.cancelButtonTitle = "Quit"
+    
+    // show the vc
     present(vc, animated: true)
+  }
+  
+  // CropViewControllerDelegate -> When the cancel button is pressed
+  func cropViewController(_ cropViewController: CropViewController, didFinishCancelled cancelled: Bool) {
+    cropViewController.dismiss(animated: true)
   }
 }
 
