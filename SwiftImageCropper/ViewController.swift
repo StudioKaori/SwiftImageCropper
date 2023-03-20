@@ -70,5 +70,9 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
   func cropViewController(_ cropViewController: CropViewController, didFinishCancelled cancelled: Bool) {
     cropViewController.dismiss(animated: true)
   }
+  
+  func cropViewController(_ cropViewController: CropViewController, didCropToImage image: UIImage, withRect cropRect: CGRect, angle: Int) {
+    print("did crop")
+  }
 }
 
