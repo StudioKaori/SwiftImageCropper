@@ -59,20 +59,29 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     // You can lock the aspect ratio
     vc.aspectRatioLockEnabled = true
     vc.toolbarPosition = .bottom
-    vc.doneButtonTitle = "Continue"
-    vc.cancelButtonTitle = "Quit"
+    vc.doneButtonColor = .red
+    vc.doneButtonTitle = "Next"
+    vc.cancelButtonTitle = "Back"
     
     // show the vc
+    vc.delegate = self
     present(vc, animated: true)
   }
   
   // CropViewControllerDelegate -> When the cancel button is pressed
   func cropViewController(_ cropViewController: CropViewController, didFinishCancelled cancelled: Bool) {
+    print("crop canceled")
     cropViewController.dismiss(animated: true)
   }
   
   func cropViewController(_ cropViewController: CropViewController, didCropToImage image: UIImage, withRect cropRect: CGRect, angle: Int) {
+    cropViewController.dismiss(animated: true)
     print("did crop")
+    
+    let imageView = UIImageView(frame:  view.frame)
+    imageView.contentMode = .scaleAspectFit
+    imageView.image = image
+    view.addSubview(imageView)
   }
 }
 
