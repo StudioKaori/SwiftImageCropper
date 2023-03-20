@@ -13,6 +13,7 @@
 		431A911C29C88EF7001A4BE3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 431A911A29C88EF7001A4BE3 /* Main.storyboard */; };
 		431A911E29C88EF8001A4BE3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 431A911D29C88EF8001A4BE3 /* Assets.xcassets */; };
 		431A912129C88EF8001A4BE3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 431A911F29C88EF8001A4BE3 /* LaunchScreen.storyboard */; };
+		431A912A29C88F12001A4BE3 /* CropViewController in Frameworks */ = {isa = PBXBuildFile; productRef = 431A912929C88F12001A4BE3 /* CropViewController */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +32,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				431A912A29C88F12001A4BE3 /* CropViewController in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -83,6 +85,9 @@
 			dependencies = (
 			);
 			name = SwiftImageCropper;
+			packageProductDependencies = (
+				431A912929C88F12001A4BE3 /* CropViewController */,
+			);
 			productName = SwiftImageCropper;
 			productReference = 431A911129C88EF7001A4BE3 /* SwiftImageCropper.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +116,9 @@
 				Base,
 			);
 			mainGroup = 431A910829C88EF7001A4BE3;
+			packageReferences = (
+				431A912829C88F11001A4BE3 /* XCRemoteSwiftPackageReference "TOCropViewController" */,
+			);
 			productRefGroup = 431A911229C88EF7001A4BE3 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -290,6 +298,7 @@
 				DEVELOPMENT_TEAM = 97MHK6W334;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SwiftImageCropper/Info.plist;
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Please allow access to select photo";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -318,6 +327,7 @@
 				DEVELOPMENT_TEAM = 97MHK6W334;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SwiftImageCropper/Info.plist;
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Please allow access to select photo";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -358,6 +368,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		431A912829C88F11001A4BE3 /* XCRemoteSwiftPackageReference "TOCropViewController" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/TimOliver/TOCropViewController";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		431A912929C88F12001A4BE3 /* CropViewController */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 431A912829C88F11001A4BE3 /* XCRemoteSwiftPackageReference "TOCropViewController" */;
+			productName = CropViewController;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 431A910929C88EF7001A4BE3 /* Project object */;
 }
