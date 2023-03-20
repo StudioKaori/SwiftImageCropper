@@ -16,8 +16,8 @@
 import CropViewController
 import UIKit
 
-class ViewController: UIViewController {
-
+class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     // Do any additional setup after loading the view.
@@ -28,12 +28,31 @@ class ViewController: UIViewController {
     button.center = view.center
     button.addTarget(self, action: #selector(didTapButton), for: .touchUpInside)
   }
-
+  
   @objc func didTapButton() {
     let picker = UIImagePickerController()
     picker.sourceType = .photoLibrary
+    picker.delegate = self
     present(picker, animated: true)
   }
-
+  
+  func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+    picker.dismiss(animated: true)
+  }
+  
+  func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+    guard let image = info[.originalImage] as? UIImage else {
+      return
+    }
+    picker.dismiss(animated: true)
+    
+    showCrop(image: image)
+  }
+  
+  func showCrop(image: UIImage) {
+    // cropper
+    let vc = CropViewController(croppingStyle: .default, image: image)
+    present(vc, animated: true)
+  }
 }
 
